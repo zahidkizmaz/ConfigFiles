@@ -1,7 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
-set number
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+set number                     " Show current line number
+set relativenumber             " Show relative line numbers
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -16,6 +18,9 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'valloric/youcompleteme'
 Plugin 'tpope/vim-fugitive'
 Plugin 'nvie/vim-flake8'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'michaeljsmith/vim-indent-object'
 map <C-n> :NERDTreeToggle<CR>
 " All of your Plugins must be added before the following line
 
