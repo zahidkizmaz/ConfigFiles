@@ -21,6 +21,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'christoomey/vim-system-copy'
 map <C-n> :NERDTreeToggle<CR>
 " All of your Plugins must be added before the following line
 
