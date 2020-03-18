@@ -4,7 +4,7 @@ endif
 
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
-let g:python3_host_prog = '/Users/muhammedzahidkizmaz/.pyenv/versions/py3nvim/bin/python'
+let g:python3_host_prog = '~/.pyenv/versions/py3nvim/bin/python'
 
 " PLUGINS
 call plug#begin('~/.vim/plugged')
