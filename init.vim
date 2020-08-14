@@ -4,7 +4,7 @@ endif
 
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
-let g:python3_host_prog = '~/.pyenv/versions/py3nvim/bin/python'
+let g:python3_host_prog = '/Users/muhammedzahidkizmaz/.pyenv/versions/pynvim-3.8.3/bin/python'
 
 " PLUGINS
 call plug#begin('~/.vim/plugged')
@@ -44,6 +44,7 @@ Plug 'Shougo/neosnippet-snippets'
 call plug#end()
 
 
+set inccommand=nosplit
 set encoding=utf-8
 set number                     				" Show current line number
 set relativenumber             				" Show relative line numbers
@@ -115,7 +116,6 @@ let g:ale_lint_on_enter = 0
 let g:jedi#completions_enabled = 0
 "
 " Deoplete-nvim
-let g:deoplete#auto_complete_delay = 100
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#enable_typeinfo = 1
 let g:deoplete#sources#jedi#show_docstring = 0
@@ -148,7 +148,7 @@ let g:pymode_syntax_slow_sync = 0
 
 " LanguageServer
 "
-let g:LanguageClient_serverCommands = {'python': ['/Users/muhammedzahidkizmaz/.pyenv/versions/3.6.9/envs/vim-env/bin/pyls'],}
+let g:LanguageClient_serverCommands = {'python': ['/Users/muhammedzahidkizmaz/.pyenv/versions/3.8.3/envs/pynvim-3.8.3/bin/pyls'],}
 
 " FZF
 "
@@ -165,7 +165,6 @@ command! -bang BTags
   \ call fzf#vim#buffer_tags('', {
   \     'options': '--with-nth 1,2
   \                 --preview-window=right
-  \                 --reverse
   \                 --preview "
   \                     bat {2} --color=always |
   \                     tail -n +\$(echo {3} | tr -d \";\\\"\")
@@ -176,7 +175,6 @@ command! -bang Tags
   \ call fzf#vim#tags('', {
   \     'options': '--with-nth 1,2
   \                 --preview-window=right
-  \                 --reverse
   \                 --preview "
   \                     bat {2} --color=always |
   \                     tail -n +\$(echo {3} | tr -d \";\\\"\")
@@ -186,6 +184,7 @@ command! -bang Tags
 " Vista
 "
 " python stays through ctags, looks better
+let g:vista_default_executive = 'ctags'
 let g:vista#renderer#enable_icon = 1
 let g:vista_fzf_preview = ['right:60%']
 let g:vista_echo_cursor_strategy = 'floating_win'
@@ -207,6 +206,9 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+" Copy&Paste to system clipboard
+vmap <Leader>y "+y
+vmap <Leader>p "+p
 " run Ag with word under cursor or selection
 nmap <leader>ag "zyiw:exe "Ag ".@z.""<CR>
 vnoremap <leader>ag "zy:exe "Ag ".@z.""<CR>
