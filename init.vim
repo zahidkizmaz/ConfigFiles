@@ -4,7 +4,7 @@ endif
 
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
-let g:python3_host_prog = '/Users/muhammedzahidkizmaz/.pyenv/versions/pynvim-3.8.3/bin/python'
+let g:python3_host_prog = '/Users/muhammedzahidkizmaz/.pyenv/versions/pynvim-3.9.0/bin/python'
 
 " PLUGINS
 call plug#begin('~/.vim/plugged')
@@ -21,7 +21,6 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'dense-analysis/ale'
 Plug 'vim-scripts/django.vim', {'for': ['html', 'htmldjango', 'txt']}
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/AutoTag'
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -29,17 +28,14 @@ Plug 'deoplete-plugins/deoplete-jedi', {'for': 'python'}
 Plug 'cespare/vim-toml'
 Plug 'zxqfl/tabnine-vim', {'for': 'python'}
 Plug 'stephpy/vim-yaml', {'for': ['yaml', 'yml']}
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh',}
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'liuchengxu/vista.vim'
 Plug 'morhetz/gruvbox' " Theme
 Plug 'machakann/vim-highlightedyank'
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'wellle/context.vim'
 
 call plug#end()
 
@@ -71,6 +67,7 @@ colorscheme gruvbox
 let g:gruvbox_contrast_dark = 'hard'
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set lazyredraw
+set ignorecase smartcase
 
 " Permanent undo
 set undodir=~/.vimdid
@@ -94,6 +91,10 @@ set listchars=nbsp:¬,extends:»,precedes:«,trail:•
 " HighlightedYank
 "
 let g:highlightedyank_highlight_duration = 300
+"
+" Context Vim
+"
+let g:context_nvim_no_redraw = 0
 "
 "
 " LeaderF
@@ -140,9 +141,7 @@ let g:pymode_options_max_line_length = 88
 let g:pymode_python = 'python3'
 let g:pymode_indent = 1
 let g:pymode_motion = 1
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_bind = '<leader>b'
-let g:pymode_breakpoint_cmd = ''
+let g:pymode_breakpoint = 0
 let g:pymode_syntax = 1
 let g:pymode_syntax_slow_sync = 0
 
@@ -181,18 +180,6 @@ command! -bang Tags
   \                     "'
   \ })
 
-" Vista
-"
-" python stays through ctags, looks better
-let g:vista_default_executive = 'ctags'
-let g:vista#renderer#enable_icon = 1
-let g:vista_fzf_preview = ['right:60%']
-let g:vista_echo_cursor_strategy = 'floating_win'
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
 "
 " Semshi
 "
@@ -278,5 +265,10 @@ cnoreabbrev QA qa
 cnoreabbrev Qa qa
 cnoreabbrev q1 q!
 cnoreabbrev Q1 q!
+
+
+" type ,b to insert breakpoint. ^[ is at the end.  Insert with ctrl v and then esc
+" (the github web gui doesn't display control characters, but it is there)
+nnoremap <leader>b oimport pdb;pdb.set_trace()
 
 source ~/.config/nvim/statusline.vim

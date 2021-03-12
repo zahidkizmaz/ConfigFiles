@@ -105,3 +105,15 @@ source ~/.bash_profile
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+# open a file with vim
+
+fpath+=~/.zfunc
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+HEROKU_AC_ZSH_SETUP_PATH=/Users/muhammedzahidkizmaz/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+eval "$(direnv hook zsh)"
+source ~/.invoke-completion.sh
+source /Users/muhammedzahidkizmaz/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export PATH="$HOME/.poetry/bin:$PATH"
